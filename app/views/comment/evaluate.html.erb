@@ -19,7 +19,7 @@
       <% @comments.each do |comment| %>
         <div class="row">
           <div class="col-md-3">
-            <div class="btn-group" role="group" style="float: right">
+            <div class="btn-group float-md-right" role="group">
               <% ReviewResult.all.each.with_index do |rr, i| %>
                 <label>
                   <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
