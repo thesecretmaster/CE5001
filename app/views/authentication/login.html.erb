@@ -10,8 +10,15 @@
   <h2 class="display-6 font-weight-bold text-center">Content Warning</h2>
   <p class="text-center">Comments you see may contain harsh language including sexual/racial slurs and general profanity. If you don't want to be exposed to such content please do not continue.</p>
   <hr class="my-4">
-  <p class="text-center">Begin by logging in to Stack Overflow</p>
-  <p class="lead text-center">
-    <%= link_to "Log in to Stack Overflow", begin_oauth_path, class: "btn btn-outline-primary btn-lg text-center" %>
-  </p>
+
+  <% if current_user.present? %>
+    <p class="lead text-center">
+      <%= link_to "Start >", comment_evaluate_path, class: "btn btn-outline-primary btn-lg text-center" %>
+    </p>
+  <% else %>
+    <p class="text-center">Begin by logging in to Stack Overflow</p>
+    <p class="lead text-center">
+      <%= link_to "Log in to Stack Overflow", begin_oauth_path, class: "btn btn-outline-primary btn-lg text-center" %>
+    </p>
+  <% end %>
 </div>
