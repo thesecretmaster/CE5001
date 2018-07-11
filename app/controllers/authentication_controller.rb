@@ -18,6 +18,8 @@ class AuthenticationController < ApplicationController
     if resp['access_token']
       account_id = JSON.parse(HTTParty.get("https://api.stackexchange.com/2.2/access-tokens/#{resp['access_token']}?key=#{se[:api_key]}").body)["items"][0]["account_id"]
       user = User.find_or_create_by(se_id: account_id)
+      user.update(username: user.get_username(resp['access_token']))
+
       session[:user_id] = user.id
       redirect_to comment_path
     else
