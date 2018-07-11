@@ -3,7 +3,7 @@ class CommentController < ApplicationController
 
   def evaluate
     db = Rails.configuration.database_configuration[Rails.env]["adapter"]
-    @post = Post.left_joins(:post_reviews).where.not(post_reviews: {user_id: current_user.id}).or(Post.left_joins(:post_reviews).where(post_reviews: {id: nil})).order(db == 'mysql' ? "RAND()" : "RANDOM()").first
+    @post = Post.left_joins(:post_reviews).where.not(post_reviews: {user_id: current_user.id}).or(Post.left_joins(:post_reviews).where(post_reviews: {id: nil})).order(Arel.sql(db == 'mysql' ? "RAND()" : "RANDOM()")).first
     @comments = @post.comments
     post_review = current_user.post_reviews.new(review_loaded: DateTime.now, post: @post)
     if post_review.save
@@ -11,6 +11,25 @@ class CommentController < ApplicationController
     else
       render status: 500, nothing: true
     end
+  end
+
+  def feedback
+    post = Comment.find(params[:comments].keys.first).post
+    pr = post.post_reviews.find_by(user: current_user)
+    comments = params.require(:comments).permit(post.comments.map { |c| c.id.to_s }).to_h
+    Rails.logger.info comments
+    if pr.user_id == current_user.id && pr.update(review_completed: DateTime.now)
+      Comment.transaction do
+        comments.all? do |id, feedback|
+          comment = Comment.find(id)
+          cr = CommentReview.new(post_review: pr, review_result_id: feedback, comment: comment)
+          rval = cr.save
+          Rails.logger.info(cr.errors.full_messages)
+          rval
+        end
+      end
+    end
+    redirect_to action: :evaluate
   end
 
   private

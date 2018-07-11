@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   scope 'comments' do
     get 'evaluate', to: 'comment#evaluate', as: :comment
+    post 'feedback', to: 'comment#feedback', as: :feedback
   end
 end
