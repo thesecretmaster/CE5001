@@ -33,16 +33,30 @@
           <ul class="nav navbar-nav"></ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user.present? %>
-              <li><%= current_user.username %></li>
+              <li class='nav-item'><%= current_user.username %></li>
+              <li class='nav-item'><%= link_to "Log Out", logout_path, class: 'nav-link' %></li>
+              <% if current_user.admin %>
+                <li class='nav-item'>
+                  <%= button_to "Start Database Dump", start_dump_path, remote: true, class: 'btn-danger', method: :get, id: 'startDbTask' %>
+                </li>
+              <% end %>
             <% else %>
-              <li>
-                <%= link_to "Log in with Stack Exchange!", begin_oauth_path %>
+              <li class='nav-item'>
+                <%= link_to "Log in with Stack Exchange!", begin_oauth_path, class: 'nav-link' %>
               </li>
             <% end %>
           </ul>
         </div>
       </div>
     </nav>
+    <div id="alerts">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
 
     <%= yield %>
   </body>

@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     get 'evaluate', to: 'comment#evaluate', as: :comment
     post 'feedback', to: 'comment#feedback', as: :feedback
   end
+
+  scope 'admin' do
+    scope 'database' do
+      get 'start', to: 'admin#db_dump', as: :start_dump
+    end
+  end
 end
