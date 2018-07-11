@@ -1,1 +1,17 @@
-<%= link_to "Log in with Stack Exchange!", begin_oauth_path %>
+<div class="jumbotron">
+  <h2 class="display-4 font-weight-bold text-center">The Stack Overflow Comment Evaluator 5001<%= "\u2122" %></h2>
+  <hr class="my-4">
+  <p class="lead text-center">Welcome! Thank you for help us to improve Stack Overflow.</p>
+  <p class="text-center">Imagine you are a new user to Stack Overflow and you've just asked a question or posted your first answer. We're going to show you the comments on your post and we'd like you to tell us how the comment make you feel.</p>
+  <h2 class="display-6 font-weight-bold text-center">Feelings</h2>
+  <% ReviewResult.all.each do |rr| %>
+    <p class="text-center"><%= rr.name %></p>
+  <% end %>
+  <h2 class="display-6 font-weight-bold text-center">Content Warning</h2>
+  <p class="text-center">Comments you see may contain hash language including sexual/racial slurs and general profanity. If you don't want to be exposed to such content please do not continue</p>
+  <hr class="my-4">
+  <p class="text-center">Begin by logging in to Stack Overflow</p>
+  <p class="lead text-center">
+    <%= link_to "Log in to Stack Overflow", begin_oauth_path, class: "btn btn-outline-primary btn-lg text-center" %>
+  </p>
+</div>
