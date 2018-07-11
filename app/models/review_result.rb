@@ -9,10 +9,10 @@ class ReviewResult < ApplicationRecord
   private
 
   def sanitize(str)
-    ActionController::Base.helpers.sanitize(str)
+    ActionController::Base.helpers.sanitize(str.to_s)
   end
 
   def raw(str)
-    ActionController::Base.helpers.raw(str)
+    ActionController::Base.helpers.raw(str.to_s)
   end
 end
