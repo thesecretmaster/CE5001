@@ -1,3 +1,19 @@
-<h1>Comment#evaluate</h1>
-<p>Find me in app/views/comment/evaluate.html.erb</p>
-<p>ALso you're logged in</p>
+<%= link_to "Log Out", logout_path %>
+
+<h1>
+  <%= @post.post_type == 2 ? 'Answer (so no title)' : @post.title %>
+</h1>
+
+<% usermap = {} %>
+
+<% @comments.each do |comment| %>
+  <p>
+    <% if comment.score.to_i != 0 %>
+      <span style="color:<%= comment.score > 0 ? 'green' : 'red' %>">
+        <%= comment.score %>
+      </span>&nbsp;&nbsp;
+    <% end %>
+    <%= comment.body %>&nbsp;-&nbsp;
+    user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %>
+  </p>
+<% end %>

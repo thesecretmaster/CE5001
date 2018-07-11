@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_043658) do
+ActiveRecord::Schema.define(version: 2018_07_11_121457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comment_reviews", force: :cascade do |t|
+    t.bigint "review_result_id"
+    t.bigint "comment_id"
+    t.bigint "post_review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_reviews_on_comment_id"
+    t.index ["post_review_id"], name: "index_comment_reviews_on_post_review_id"
+    t.index ["review_result_id"], name: "index_comment_reviews_on_review_result_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -23,7 +34,19 @@ ActiveRecord::Schema.define(version: 2018_07_11_043658) do
     t.integer "commenter_rep"
     t.datetime "se_creation_date"
     t.bigint "post_id"
+    t.bigint "commenter_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "post_reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.datetime "review_loaded"
+    t.datetime "review_completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_reviews_on_post_id"
+    t.index ["user_id"], name: "index_post_reviews_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -36,6 +59,12 @@ ActiveRecord::Schema.define(version: 2018_07_11_043658) do
     t.text "link"
   end
 
+  create_table "review_results", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.text "access_token"
     t.text "username"
@@ -44,5 +73,10 @@ ActiveRecord::Schema.define(version: 2018_07_11_043658) do
     t.bigint "se_id"
   end
 
+  add_foreign_key "comment_reviews", "comments"
+  add_foreign_key "comment_reviews", "post_reviews"
+  add_foreign_key "comment_reviews", "review_results"
   add_foreign_key "comments", "posts"
+  add_foreign_key "post_reviews", "posts"
+  add_foreign_key "post_reviews", "users"
 end
