@@ -1,31 +1,32 @@
-<%= link_to "Log Out", logout_path %>
-
-<h1>
-  <%= @post.post_type == 2 ? 'Answer (so no title)' : @post.title %>
+<h1 class="m-4">
+  <%= @post.post_type == 2 ? '(answer; no title available)' : @post.title %>
 </h1>
 
+<hr>
+
 <% usermap = {} %>
-
-<%= form_tag feedback_path, id: 'comment-evaluation' do %>
-  <% @comments.each do |comment| %>
-    <p>
-      <% if comment.score.to_i != 0 %>
-        <span style="color:<%= comment.score > 0 ? 'green' : 'red' %>">
-          <%= comment.score %>
-        </span>&nbsp;&nbsp;
-      <% end %>
-      <%= comment.body %>&nbsp;-&nbsp;
-      user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %>
-    </p>
-    <p>
-      <!-- TODO: Use EMOJI! -->
-      <% ReviewResult.all.each do |rr| %>
-        <%= label_tag "comments[#{comment.id}]", rr.name, value: rr.id  %>
-        <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
-      <% end %>
-    </p>
+<div class="container comment-container">
+  <%= form_tag feedback_path, id: 'comment-evaluation' do %>
+    <% @comments.each do |comment| %>
+      <p>
+        <% if comment.score.to_i != 0 %>
+          <span style="color:<%= comment.score > 0 ? 'green' : 'red' %>">
+            <%= comment.score %>
+          </span>&nbsp;&nbsp;
+        <% end %>
+        <%= comment.body %>&nbsp;-&nbsp;<span class="text-primary">
+        user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
+      </p>
+      <p>
+        <!-- TODO: Use EMOJI! -->
+        <% ReviewResult.all.each do |rr| %>
+          <%= label_tag "comments[#{comment.id}]", rr.name, value: rr.id  %>
+          <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= submit_tag "Submit Review", form: 'comment-evaluation' %>
-<%= button_to "Skip", comment_path, method: :get %>
+  <%= submit_tag "Submit Review", form: 'comment-evaluation', class: 'inline btn btn-primary' %>
+  <%= link_to "Skip", comment_path, method: :get, class: 'inline btn btn-warning' %>
+</div>
