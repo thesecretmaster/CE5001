@@ -3,7 +3,7 @@ class AuthenticationController < ApplicationController
 
   def begin_oauth
     se = Rails.application.credentials[:SE]
-    redirect_to "https://stackoverflow.com/oauth?client_id=#{se[:client_id]}&redirect_uri=#{end_oauth_url}&scope=no_expiry"
+    redirect_to "https://stackoverflow.com/oauth?client_id=#{se[:client_id]}&redirect_uri=#{end_oauth_url}"
   end
 
   def end_oauth
