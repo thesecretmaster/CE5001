@@ -1,3 +1,15 @@
+<br />
+
+<div class="text-center">
+  <h4>
+    <% ReviewResult.all.each do |rr| %>
+      <%= rr.emoji_or_fallback %> = <%= rr.name %>
+    <% end %>
+  </h4>
+</div>
+
+<br />
+
 <hr>
 
 <% usermap = {} %>
@@ -13,8 +25,6 @@
                   <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
                   <%= rr.emoji_or_fallback %>
                 </label>
-                <!-- <%= label_tag "comments[#{comment.id}]", rr.name, value: rr.id  %> -->
-                <!-- <%= radio_button_tag "comments[#{comment.id}]", rr.id %> -->
               <% end %>
             </div>
           </div>
