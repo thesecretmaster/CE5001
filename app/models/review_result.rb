@@ -3,7 +3,7 @@ class ReviewResult < ApplicationRecord
 
   def emoji_or_fallback(**opts)
     return emoji if emoji.length <= 1
-    raw("<img src=\"#{sanitize(emoji)}\" #{opts.map { |k, v| "#{sanitize(k)}=\"#{sanitize(v)}\""}.join(' ')}>")
+    raw("<img width='23px' height='23px' src=\"#{sanitize(emoji)}\" #{opts.map { |k, v| "#{sanitize(k)}=\"#{sanitize(v)}\""}.join(' ')}>")
   end
 
   private
