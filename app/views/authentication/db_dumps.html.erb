@@ -1,0 +1,10 @@
+<table class="table">
+  <% @dumps.each do |dir| %>
+    <tr>
+      <td><%=File.basename(dir)%></td>
+      <% (dir.entries - %w[. ..]).each do |file|%>
+        <td><%= link_to File.basename(file), "/dumps/#{File.basename(dir)}/#{File.basename(file)}" %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

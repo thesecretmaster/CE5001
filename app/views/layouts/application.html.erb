@@ -35,14 +35,17 @@
             <% if current_user.present? %>
               <li class='nav-item'><%= current_user.username %></li>
               <li class='nav-item'><%= link_to "Log Out", logout_path, class: 'nav-link' %></li>
-              <% if current_user.admin %>
-                <li class='nav-item'>
-                  <%= button_to "Start Database Dump", start_dump_path, remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
-                </li>
-              <% end %>
             <% else %>
               <li class='nav-item'>
                 <%= link_to "Log in with Stack Exchange!", begin_oauth_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+            <li class='nav-item'>
+              <%= link_to "Database Dumps", db_dumps_path, class: 'nav-link' %>
+            </li>
+            <% if current_user.present? && current_user.admin %>
+              <li class='nav-item'>
+                <%= button_to "Start Database Dump", start_dump_path, remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
               </li>
             <% end %>
           </ul>

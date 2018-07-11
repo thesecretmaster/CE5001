@@ -25,6 +25,10 @@ class AuthenticationController < ApplicationController
     end
   end
 
+  def db_dumps
+    @dumps = Dir["#{Rails.root}/public/dumps/*"].map { |dir| Dir.new(dir) }
+  end
+
   def logout
     session.clear
     redirect_to login_path

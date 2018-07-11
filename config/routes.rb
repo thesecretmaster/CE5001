@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   scope 'oauth' do
     get 'begin', to: 'authentication#begin_oauth', as: :begin_oauth
     get 'return', to: 'authentication#end_oauth', as: :end_oauth
-    get '/logout', to: 'authentication#logout', as: :logout
+    get 'logout', to: 'authentication#logout', as: :logout
   end
+
+  get 'dumps', to: 'authentication#db_dumps', as: :db_dumps
 
   scope 'comments' do
     get 'evaluate', to: 'comment#evaluate', as: :comment
