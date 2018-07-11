@@ -4,7 +4,7 @@ class CommentController < ApplicationController
   def evaluate
     db = Rails.configuration.database_configuration[Rails.env]["adapter"]
     @post = Post.left_joins(:post_reviews).where.not(post_reviews: {user_id: current_user.id}).or(Post.left_joins(:post_reviews).where(post_reviews: {id: nil})).order(Arel.sql(db == 'mysql2' ? "RAND()" : "RANDOM()")).first
-    @comments = @post.comments
+    @comments = @post.comments.sort_by(&:se_creation_date)
     post_review = current_user.post_reviews.new(review_loaded: DateTime.now, post: @post)
     if post_review.save
       render :evaluate, status: :ok
