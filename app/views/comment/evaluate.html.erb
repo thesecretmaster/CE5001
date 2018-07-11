@@ -18,8 +18,8 @@
     <div class="container">
       <% @comments.each do |comment| %>
         <div class="row">
-          <div class="col-lg-3">
-            <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="col-md-3">
+            <div class="btn-group" role="group" style="float: right">
               <% ReviewResult.all.each.with_index do |rr, i| %>
                 <label>
                   <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
@@ -28,7 +28,7 @@
               <% end %>
             </div>
           </div>
-          <div class="col-lg-9">
+          <div class="col-md-9">
             <p>
               <%= comment.body %>&nbsp;-&nbsp;<span class="text-primary"> user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
             </p>
