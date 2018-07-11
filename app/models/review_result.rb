@@ -1,3 +1,18 @@
 class ReviewResult < ApplicationRecord
   has_many :comment_reviews
+
+  def emoji_or_fallback(**opts)
+    return emoji if emoji.length <= 1
+    raw("<img src=\"#{sanitize(emoji)}\" #{opts.map { |k, v| "#{sanitize(k)}=\"#{sanitize(v)}\""}.join(' ')}>")
+  end
+
+  private
+
+  def sanitize(str)
+    ActionController::Base.helpers.sanitize(str)
+  end
+
+  def raw(str)
+    ActionController::Base.helpers.raw(str)
+  end
 end

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ReviewResult.create([
-  {name: "I feel fine or neutral"},
-  {name: "I feel unsure or annoyed"},
-  {name: "I feel angry or upset"}
+  {name: "I feel fine or neutral", emoji: "https://i.stack.imgur.com/kdoSG.png"}, # "\u{1F642}"
+  {name: "I feel unsure or annoyed", emoji: "https://i.stack.imgur.com/ivJN0.png"}, # "\u{1F928}"
+  {name: "I feel angry or upset", emoji: "https://i.stack.imgur.com/e4XNR.png"} # "\u{1F92C}"
 ])
