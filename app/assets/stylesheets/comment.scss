@@ -12,16 +12,19 @@
   }
 
   input[type="radio"]:checked + span {
-    background: rgba(108,117,125,0.65) !important;
+    background: rgba(108,117,125,0.37) !important;
+    color: #3b4045;
+    // border-color: #76808a; Had to remove because overlapping border weirdness
   }
 
   input[type="radio"]:hover + span {
-    background: rgba(108,117,125,0.4);
+    background: rgba(108,117,125,0.2);
   }
 
   .btn {
     border-radius: 0px !important;
     margin-left:-1px;
+    border-color: #adb3b9;
   }
 
   .btn-img {
