@@ -23,7 +23,7 @@
               <% ReviewResult.all.each.with_index do |rr, i| %>
                 <label>
                   <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
-                  <span class="btn btn-outline-secondary<%= " btn-left" if i == 0%><%= " btn-right" if i == ReviewResult.count-1 %>"><%= rr.emoji_or_fallback %></span>
+                  <span class="btn btn-img btn-outline-secondary<%= " btn-left" if i == 0%><%= " btn-right" if i == ReviewResult.count-1 %>"><%= rr.emoji_or_fallback %></span>
                 </label>
               <% end %>
             </div>
