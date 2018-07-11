@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.emoji {
+  opacity:0.9;
+  // An image fade would be nice... but... NO
+}
+
 .comment-container form {
   input[type=radio] {
     position:fixed;opacity:0;

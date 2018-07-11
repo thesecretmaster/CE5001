@@ -10,11 +10,10 @@
 
 <br />
 
-<hr>
-
 <% usermap = {} %>
 <div class="container comment-container">
   <%= form_tag feedback_path, id: 'comment-evaluation' do %>
+  <hr>
     <div class="container">
       <% @comments.each do |comment| %>
         <div class="row">
@@ -40,7 +39,7 @@
   <% end %>
 
   <div class='text-center'>
-    <%= submit_tag "Submit", form: 'comment-evaluation', class: 'inline btn btn-primary' %>
-    <%= link_to "Skip", comment_path, method: :get, class: 'inline btn btn-warning' %>
+    <%= submit_tag "Submit", form: 'comment-evaluation', class: 'inline mr-4 btn btn-outline-success' %>
+    <%= link_to "Skip", comment_path, method: :get, class: 'inline mr-4 btn btn-outline-secondary' %>
   </div>
 </div>
