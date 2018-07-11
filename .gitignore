@@ -27,3 +27,6 @@
 
 config/database.yml
 QueryResults.csv.*
+
+public/dumps/**/*
+!public/dumps/.keep
