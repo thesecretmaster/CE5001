@@ -20,10 +20,10 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <% ReviewResult.all.each do |rr| %>
-                <label class="btn btn-outline-secondary">
+              <% ReviewResult.all.each.with_index do |rr, i| %>
+                <label>
                   <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
-                  <%= rr.emoji_or_fallback %>
+                  <span class="btn btn-outline-secondary<%= " btn-left" if i == 0%><%= " btn-right" if i == ReviewResult.count-1 %>"><%= rr.emoji_or_fallback %></span>
                 </label>
               <% end %>
             </div>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
   <% end %>
-  
+
   <div class='text-center'>
     <%= submit_tag "Submit", form: 'comment-evaluation', class: 'inline btn btn-primary' %>
     <%= link_to "Skip", comment_path, method: :get, class: 'inline btn btn-warning' %>

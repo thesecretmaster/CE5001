@@ -1,10 +1,30 @@
 // Place all the styles related to the comment controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.qtitle {
-  
+
+.comment-container input[type=radio]{
+  position:fixed;opacity:0;
 }
-.comment-container {
-  // padding:0.7em;
-  // padding-left:0.4em;
+
+.comment-container input[type="radio"] + span {
+  content: '';
+  transition: 0.5s ease all;
+}
+
+.comment-container input[type="radio"]:checked + span {
+  background: grey;
+}
+
+.btn {
+  border-radius: 0px !important;
+}
+
+.btn-left {
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+}
+
+.btn-right {
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
 }
