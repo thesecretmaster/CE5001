@@ -30,3 +30,4 @@ QueryResults.csv.*
 
 public/dumps/**/*
 !public/dumps/.keep
+config/credentials.yml.enc
