@@ -1,8 +1,9 @@
 module ApplicationHelper
   def current_user
-    if session[:user_id]
+    if session[:user_id] && User.exists?(session[:user_id])
        User.find(session[:user_id])
     else
+      session.delete(:user_id)
       nil
     end
   end
