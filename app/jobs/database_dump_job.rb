@@ -6,9 +6,9 @@ class DatabaseDumpJob < ApplicationJob
     things_to_include = {
       User => %w[id],
       CommentReview => %w[review_result_id id post_review_id],
-      Comment => %w[body score id commenter_rep post_id],
+      Comment => %w[body score id se_id commenter_rep post_id],
       PostReview => %w[user_id post_id],
-      Post => %w[body post_type id title poster_rep],
+      Post => %w[body post_type id se_id title poster_rep],
       ReviewResult => %w[name id]
     }
     Dir.mkdir("#{Rails.root}/public/dumps") unless File.directory?("#{Rails.root}/public/dumps")
