@@ -1,17 +1,22 @@
 <br />
 
-<div class="col-md-10 offset-md-1">
-  <div class='alert alert-primary'>
-    <strong>Hi there!</strong> This is a tool built by <a href="https://chat.stackexchange.com/rooms/80012/ce5001">members of the Stack Exchange community</a>.
-    It's designed to replicate the tool used in <a href="https://stackoverflow.blog/2018/07/10/welcome-wagon-classifying-comments-on-stack-overflow/?cb=1">this Stack Exchange blog post</a>.
-    <br />
-    <br />
-    It's a community effort, but <strong>we are not Stack Exchange</strong>, and this project isn't endorsed by Stack Exchange.
+<% if session[:banner_dismissed] != true %>
+  <div class="col-md-10 offset-md-1">
+    <div class='alert alert-primary'>
+      <%= link_to dismiss_banner_path, class: 'close' do %>
+        <span aria-hidden="true">&times;</span>
+      <% end %>
+      <strong>Hi there!</strong> This is a tool built by <a href="https://chat.stackexchange.com/rooms/80012/ce5001">members of the Stack Exchange community</a>.
+      It's designed to replicate the tool used in <a href="https://stackoverflow.blog/2018/07/10/welcome-wagon-classifying-comments-on-stack-overflow/?cb=1">this Stack Exchange blog post</a>.
+      <br />
+      <br />
+      It's a community effort, but <strong>we are not Stack Exchange</strong>, and this project isn't endorsed by Stack Exchange.
 
-    <br /><br />
-    <%= render 'comment/data_usage' %>
+      <br /><br />
+      <%= render 'comment/data_usage' %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="jumbotron" style="background-color: white">
   <h2 class="display-4 font-weight-bold text-center">The Stack Overflow Comment Evaluator 5001<%= "\u2122" %></h2>

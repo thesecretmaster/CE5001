@@ -1,4 +1,10 @@
-<strong>Data usage:</strong>
+<% text_center ||= false %>
+
+<% if text_center %>
+  <p class='text-center'><strong>Data Usage</strong></p>
+<% else %>
+  <strong>Data usage:</strong>
+<% end %>
 <ul>
   <li>Your feedback and identity is stored in the database. Project maintainers may have access to this.</li>
   <li>We may publish statistics grouped by user <i>type</i> - for example, feedback stats from SO&nbsp;moderators vs. network&nbsp;moderators vs. non-moderators. That kind of thing. We'll try not to individually identify anyone.</li>

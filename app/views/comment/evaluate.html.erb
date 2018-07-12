@@ -43,8 +43,8 @@
     <%= link_to "Skip", comment_path, method: :get, class: 'inline mr-4 btn btn-outline-secondary' %>
   </div>
 
-  <br />
-  <div class="alert alert-light col-md-4 offset-md-4">
-    <%= render 'comment/data_usage' %>
+  <br /><br />
+  <div class="alert alert-light col-md-8 offset-md-2">
+    <%= render 'comment/data_usage', text_center: true %>
   </div>
 </div>

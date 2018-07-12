@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   get 'dumps', to: 'authentication#db_dumps', as: :db_dumps
+  get 'banner/dismiss', to: 'authentication#dismiss_banner', as: :dismiss_banner
 
   scope 'comments' do
     get 'evaluate', to: 'comment#evaluate', as: :comment

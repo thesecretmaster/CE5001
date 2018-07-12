@@ -31,6 +31,11 @@ class AuthenticationController < ApplicationController
     @dumps = Dir["#{Rails.root}/public/dumps/*"].map { |dir| Dir.new(dir) }
   end
 
+  def dismiss_banner
+    session[:banner_dismissed] = true
+    redirect_to login_path
+  end
+
   def logout
     session.clear
     redirect_to login_path
