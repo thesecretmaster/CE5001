@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_002649) do
+ActiveRecord::Schema.define(version: 2018_07_12_013326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 2018_07_12_002649) do
     t.datetime "updated_at", null: false
     t.bigint "se_id"
     t.boolean "admin", default: false
+    t.string "user_type"
+    t.bigint "reputation"
+    t.bigint "question_count"
+    t.bigint "answer_count"
   end
 
   add_foreign_key "comment_reviews", "comments"
