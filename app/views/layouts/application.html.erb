@@ -44,7 +44,7 @@
             <% if current_user.present? %>
               <% if current_user.admin %>
                 <li class='nav-item'>
-                  <%= button_to "Start Database Dump", start_dump_path, remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
+                  <%= button_to "Start Database Dump", start_dump_path(format: :json), remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
                 </li>
               <% end %>
             <li class='nav-item'><%= link_to "Log Out", logout_path, class: 'nav-link' %></li>

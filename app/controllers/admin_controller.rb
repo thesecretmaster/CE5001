@@ -4,7 +4,10 @@ class AdminController < ApplicationController
   def db_dump
     DatabaseDumpJob.perform_later
     # flash[:success] = 'A database dump task has been queued'
-    render json: {status: 'success'}, status: :ok
+    respond_to do |format|
+      format.json { render json: {status: 'success'}, status: :ok }
+      format.html { redirect_back fallback_location: comment_path }
+    end
   end
 
   private
