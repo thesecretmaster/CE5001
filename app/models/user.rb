@@ -19,7 +19,7 @@ class User < ApplicationRecord
       items << JSON.parse(resp.body)['items']
       Net::HTTP.get_response(URI.parse("https://api.stackexchange.com/2.2/me/associated?pagesize=100&page=3&filter=#{filter}&#{auth_string}"))
       items << JSON.parse(resp.body)['items']
-      items.reject!(&:empty?).flatten!
+      items = items.flatten
 
       first_site = URI.parse(items[0]['site_url']).host
 
