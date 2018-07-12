@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'evaluate', to: 'comment#evaluate', as: :comment
     post 'feedback', to: 'comment#feedback', as: :feedback
     get 'history', to: 'admin#past_reviews', as: :history
+    get 'nomore', to: 'comment#done', as: :done
   end
 
   get 'post/:id', to: 'comment#post_redirect', as: :post

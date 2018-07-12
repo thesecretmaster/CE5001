@@ -19,9 +19,8 @@ class User < ApplicationRecord
       items << JSON.parse(resp.body)['items']
       Net::HTTP.get_response(URI.parse("https://api.stackexchange.com/2.2/me/associated?pagesize=100&page=3&filter=#{filter}&#{auth_string}"))
       items << JSON.parse(resp.body)['items']
-      items.reject!(&:empty?)
+      items.reject!(&:empty?).flatten!
 
-      Rails.logger.info "https://api.stackexchange.com/2.2/me/associated?pagesize=100&filter=!ms3d6aRI6N&#{auth_string}"
       first_site = URI.parse(items[0]['site_url']).host
 
       roles = %w[does_not_exist unregistered registered team_admin moderator staff]
@@ -29,9 +28,7 @@ class User < ApplicationRecord
       reputation = 0
       question_count = 0
       answer_count = 0
-      Rails.logger.info "Got #{items.length} sites; #{items}"
       items.each do |site|
-        Rails.logger.info site
         user_type = site['user_type'] if roles.index(site['user_type']).to_i > roles.index(user_type).to_i
         reputation += site['reputation'].to_i
         question_count += site['question_count'].to_i
