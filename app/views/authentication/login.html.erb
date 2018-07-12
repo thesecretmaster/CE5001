@@ -34,7 +34,7 @@
 
     <% if current_user.present? %>
       <p class="lead text-center">
-        <%= link_to "Start Evaluating", comment_evaluate_path, class: "btn btn-outline-primary btn-lg text-center" %>
+        <%= link_to "Start Evaluating", comment_path, class: "btn btn-outline-primary btn-lg text-center" %>
       </p>
     <% else %>
       <p class="text-center">Begin by logging in to Stack Overflow</p>

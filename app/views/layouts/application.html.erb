@@ -47,8 +47,18 @@
                   <%= button_to "Start Database Dump", start_dump_path(format: :json), remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
                 </li>
               <% end %>
-            <li class='nav-item'><%= link_to "Log Out", logout_path, class: 'nav-link' %></li>
-            <li class='nav-item navbar-text'><%= current_user.username %></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.username %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Log Out", logout_path, class: 'dropdown-item' %>
+                <div class="dropdown-divider"></div>
+                <% if current_user.admin %>
+                  <%= link_to "My Reviews", history_path, class: 'dropdown-item' %>
+                <% end %>
+              </div>
+            </li>
             <% else %>
               <li class='nav-item'>
                 <%= link_to "Log in with Stack Exchange!", begin_oauth_path, class: 'nav-link' %>

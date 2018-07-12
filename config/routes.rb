@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'comment/evaluate'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'authentication#login', as: :login
 
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   scope 'comments' do
     get 'evaluate', to: 'comment#evaluate', as: :comment
     post 'feedback', to: 'comment#feedback', as: :feedback
+    get 'history', to: 'admin#past_reviews', as: :history
   end
 
   get 'post/:id', to: 'comment#post_redirect', as: :post

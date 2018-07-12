@@ -1,0 +1,10 @@
+<h1>Recent Review Summary</h1>
+<% @post_reviews.each do |pr| %>
+  <p>
+    <%= pr.review_completed %>: Review submitted on <%= pr.post.title.empty? ? "an answer" : "\"#{pr.post.title}\"" %>.
+    <% Rails.logger.info pr.post.inspect %>
+    <% pr.comment_reviews.select('review_result_id').group(:review_result_id).count.each do |id, count| %>
+    <%= count %>&times;<%= ReviewResult.find(id).emoji_or_fallback %>&nbsp;
+    <% end %>
+  </p>
+<% end %>

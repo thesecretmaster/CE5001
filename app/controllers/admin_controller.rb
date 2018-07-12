@@ -10,6 +10,10 @@ class AdminController < ApplicationController
     end
   end
 
+  def past_reviews
+    @post_reviews = PostReview.where(user:current_user).where.not(review_completed: nil).order(review_completed: :asc)
+  end
+
   private
 
   def require_admin
