@@ -16,3 +16,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('change', 'input[type=radio]', function (ev) {
+  $(ev.target).parents('.row').addClass('reviewed');
+});
+
