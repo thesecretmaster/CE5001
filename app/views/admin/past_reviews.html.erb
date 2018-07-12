@@ -1,4 +1,5 @@
 <h1>Recent Review Summary</h1>
+<p><%= @skips %> skipped reviews</p>
 <% @post_reviews.each do |pr| %>
   <p>
     <%= pr.review_completed %>: Review submitted on <%= pr.post.title.empty? ? "an answer" : "\"#{pr.post.title}\"" %>.

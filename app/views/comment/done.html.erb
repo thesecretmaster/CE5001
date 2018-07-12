@@ -1,2 +1,8 @@
-<h1>No more comments left to review!</h1>
-<p>Thank you for your contribution!</p>
+<div class="jumbotron text-center container" style="background:inherit">
+  <%= ReviewResult.all.order(random_order).first.emoji_or_fallback(class: 'img-large') %>
+  <br><br>
+  <hr>
+  <br>
+  <h1>No more comments left to review!</h1>
+  <i>Thank you for your contribution!</i>
+</div>

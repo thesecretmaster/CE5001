@@ -6,4 +6,9 @@ module ApplicationHelper
       nil
     end
   end
+
+  def random_order
+    db = Rails.configuration.database_configuration[Rails.env]["adapter"]
+    Arel.sql(db == 'mysql2' ? "RAND()" : "RANDOM()")
+  end
 end

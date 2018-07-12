@@ -12,6 +12,7 @@ class AdminController < ApplicationController
 
   def past_reviews
     @post_reviews = PostReview.where(user:current_user).where.not(review_completed: nil).order(review_completed: :asc)
+    @skips = PostReview.where(user:current_user).where(review_completed: nil).count
   end
 
   private

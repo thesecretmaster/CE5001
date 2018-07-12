@@ -25,3 +25,8 @@ footer {
 body {
   padding-bottom:120px;
 }
+
+.img-large {
+  width:7em;
+  height:auto;
+}
