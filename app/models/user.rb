@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :post_reviews
+  has_many :comment_reviews, through: :post_reviews
 
   def get_user_metadata(api_token)
     if api_token.nil?
