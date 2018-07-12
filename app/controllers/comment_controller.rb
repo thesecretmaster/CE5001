@@ -32,6 +32,12 @@ class CommentController < ApplicationController
     redirect_to action: :evaluate
   end
 
+  def post_redirect
+    pr = PostReview.where(user: current_user, post_id: params[:id]).order(:created_at).last
+    pr.update(peeked: true)
+    redirect_to pr.post.link
+  end
+
   private
 
   def require_login

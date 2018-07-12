@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_193306) do
+ActiveRecord::Schema.define(version: 2018_07_12_002649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_193306) do
     t.datetime "review_completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "peeked", default: false
     t.index ["post_id"], name: "index_post_reviews_on_post_id"
     t.index ["user_id"], name: "index_post_reviews_on_user_id"
   end

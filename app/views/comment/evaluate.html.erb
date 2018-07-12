@@ -47,4 +47,9 @@
   <div class="alert alert-light col-md-8 offset-md-2">
     <%= render 'comment/data_usage', text_center: true %>
   </div>
+
+  <br /><br />
+  <div class="alert alert-light col-md-8 offset-md-2">
+    <small class='text-muted'><i><%= link_to "see comments on stack overflow", post_path(id: @post.id) %></i></small>
+  </div>
 </div>

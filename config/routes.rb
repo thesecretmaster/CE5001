@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     post 'feedback', to: 'comment#feedback', as: :feedback
   end
 
+  get 'post/:id', to: 'comment#post_redirect', as: :post
+
   scope 'admin' do
     scope 'database' do
       get 'start', to: 'admin#db_dump', as: :start_dump
