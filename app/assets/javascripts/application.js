@@ -18,6 +18,37 @@
 //= require_tree .
 
 $(document).on('change', 'input[type=radio]', function (ev) {
-  $(ev.target).parents('.row').addClass('reviewed');
+  if (localStorage['ce5001MinimizeReviewed']) {
+    $(ev.target).parents('.row').addClass('reviewed');
+  }
+});
+
+$(document).on('click', '.toggle-minimize', function (ev) {
+  ev.preventDefault();
+
+  if (localStorage['ce5001MinimizeReviewed']) {
+    localStorage.removeItem('ce5001MinimizeReviewed');
+  }
+  else {
+    localStorage['ce5001MinimizeReviewed'] = 'true';
+  }
+
+  var confirmer = $('<span class="text-success">&#x2713;</span>');
+  confirmer.css({
+    position: 'relative',
+    top: '-0.5em'
+  });
+  $(ev.target).after(confirmer);
+  confirmer.css('transition', 'all 0.5s ease');
+
+  setTimeout(function () {
+    confirmer.css({
+      top: '-1.5em',
+      filter: 'opacity(50%)'
+    });
+    setTimeout(function () {
+      confirmer.remove();
+    }, 500);
+  }, 0);
 });
 
