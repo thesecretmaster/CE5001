@@ -3,7 +3,7 @@
 <div class="text-center">
   <h4>
     <% ReviewResult.all.each do |rr| %>
-      <%= rr.emoji_or_fallback %> = <%= rr.name %>
+        <%= rr.emoji_or_fallback %> = <%= rr.name %>
     <% end %>
   </h4>
 </div>
@@ -13,29 +13,29 @@
 <% usermap = {} %>
 <div class="container comment-container">
   <%= form_tag feedback_path, id: 'comment-evaluation' do %>
-  <hr>
-    <div class="container">
-      <% @comments.each do |comment| %>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="btn-group float-md-right" role="group">
-              <% ReviewResult.all.each.with_index do |rr, i| %>
-                <label>
-                  <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
-                  <span class="btn btn-img btn-outline-secondary<%= " btn-left" if i == 0%><%= " btn-right" if i == ReviewResult.count-1 %>"><%= rr.emoji_or_fallback %></span>
-                </label>
-              <% end %>
+      <hr>
+      <div class="container">
+        <% @comments.each do |comment| %>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="btn-group float-md-right" role="group">
+                  <% ReviewResult.all.each.with_index do |rr, i| %>
+                      <label>
+                        <%= radio_button_tag "comments[#{comment.id}]", rr.id %>
+                        <span class="btn btn-img btn-outline-secondary<%= " btn-left" if i == 0%><%= " btn-right" if i == ReviewResult.count-1 %>"><%= rr.emoji_or_fallback %></span>
+                      </label>
+                  <% end %>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <p>
+                  <%= comment.body %> &mdash; <span class="text-primary">user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-9">
-            <p>
-              <%= comment.body %> &mdash; <span class="text-primary">user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
-            </p>
-          </div>
-        </div>
-        <hr>
-      <% end %>
-    </div>
+            <hr>
+        <% end %>
+      </div>
   <% end %>
 
   <div class='text-center'>
@@ -43,12 +43,17 @@
     <%= link_to "Skip", comment_path, method: :get, class: 'inline mr-4 btn btn-outline-secondary' %>
   </div>
 
-  <br /><br />
+  <br/><br/>
+  <div class="text-center">
+    <small><a href="#" class="toggle-minimize text-muted">Minimize comments once I've reviewed them (click to toggle)</a></small>
+  </div>
+
+  <br/>
   <div class="alert alert-light col-md-8 offset-md-2">
     <%= render 'comment/data_usage', text_center: true %>
   </div>
 
-  <br />
+  <br/>
   <div class="alert alert-light col-md-8 offset-md-2 text-center">
     <small><i><%= link_to "click to see comments on stack overflow (this action is logged)", post_path(id: @post.id), class: 'text-muted' %></i></small>
   </div>

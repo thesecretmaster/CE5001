@@ -33,14 +33,24 @@
   }
 
   .btn-img {
+    transition: all 0.2s ease;
     min-width:4.2em;
     min-height:4em;
 
     img {
+      transition: all 0.2s ease;
       margin-top:0.5em;
       width:2em;
       height:2em;
     }
+  }
+
+  p {
+    transition: all 0.2s ease;
+  }
+
+  .row + hr {
+    transition: all 0.2s ease;
   }
 
   $radius: 0.17rem;
@@ -52,5 +62,36 @@
   .btn-right {
     border-top-right-radius: $radius !important;
     border-bottom-right-radius: $radius !important;
+  }
+
+  @media screen and (min-width: 600px) {
+    .row.reviewed:not(:hover) {
+      transition: all 0.2s ease;
+      filter: opacity(65%);
+
+      .btn-img {
+        transition: all 0.2s ease;
+        min-width: 0.9em;
+        min-height: 0.9em;
+        padding: 0.1rem 0.425rem;
+
+        img {
+          transition: all 0.2s ease;
+          margin-top: 0;
+          width: 0.9em;
+          height: 0.9em;
+        }
+      }
+
+      p {
+        font-size: 0.75em;
+        transition: all 0.2s ease;
+      }
+
+      & + hr {
+        transition: all 0.2s ease;
+        margin-top: 0.2rem;
+      }
+    }
   }
 }
