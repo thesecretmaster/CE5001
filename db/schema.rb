@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_013326) do
+ActiveRecord::Schema.define(version: 2018_08_17_010027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_013326) do
     t.datetime "se_creation_date"
     t.bigint "post_id"
     t.bigint "commenter_id"
+    t.text "commenter_name"
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 

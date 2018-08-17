@@ -29,7 +29,7 @@
               </div>
               <div class="col-md-9">
                 <p>
-                  <%= comment.body %> &mdash; <span class="text-primary">user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
+                  <%= obscure_usernames comment.body, usermap: usermap, post: comment.post %> &mdash; <span class="text-primary">user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
                 </p>
               </div>
             </div>

@@ -27,6 +27,7 @@ namespace :csv do
                      score: row['CommentScore'],
                      commenter_rep: row['CommenterRep'],
                      commenter_id: row['CommenterId'],
+                     commenter_name: row['CommenterName'],
                      se_creation_date: DateTime.parse(row['CommentCreationDate']))
       pb.increment
     end
