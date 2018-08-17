@@ -17,6 +17,22 @@
 //= require turbolinks
 //= require_tree .
 
+function setText() {
+  messages = {'off': "Minimize comments once I've reviewed them",
+  'on': "Stop minimizing comments once I've reviewed them"};
+  ele = $(".toggle-minimize")[0];
+  if (localStorage['ce5001MinimizeReviewed']) {
+    ele.textContent = messages['on'];
+  } else {
+    ele.textContent = messages['off'];
+  }
+}
+
+$( document ).ready(function() {
+  setText();
+  $('#settings').css('display', 'initial');
+});
+
 $(document).on('change', 'input[type=radio]', function (ev) {
   if (localStorage['ce5001MinimizeReviewed']) {
     $(ev.target).parents('.row').addClass('reviewed');
@@ -28,10 +44,12 @@ $(document).on('click', '.toggle-minimize', function (ev) {
 
   if (localStorage['ce5001MinimizeReviewed']) {
     localStorage.removeItem('ce5001MinimizeReviewed');
+    $('.reviewed').removeClass('reviewed');
   }
   else {
     localStorage['ce5001MinimizeReviewed'] = 'true';
   }
+  setText();
 
   var confirmer = $('<span class="text-success">&#x2713;</span>');
   confirmer.css({
@@ -51,4 +69,3 @@ $(document).on('click', '.toggle-minimize', function (ev) {
     }, 500);
   }, 0);
 });
-
