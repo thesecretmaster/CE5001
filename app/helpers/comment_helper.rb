@@ -39,10 +39,10 @@ module CommentHelper
         segment = segment
       end
     end.join
-    text = text.gsub(%r{(^|\b)\*\*([^\*]*)\*\*($|\b)}, '<b>\2</b>')
-    text = text.gsub(%r{(^|\b)\_\_([^\_]*)\_\_($|\b)}, '<b>\2</b>')
-    text = text.gsub(%r{(^|\b)\*([^\*]*)\*($|\b)}, '<i>\2</i>')
-    text = text.gsub(%r{(^|\b)\_([^\_]*)\_($|\b)}, '<i>\2</i>')
+    text = text.gsub(%r{(^|\W)\*\*([^\*]*)\*\*($|\W)}, '<b>\2</b>')
+    text = text.gsub(%r{(^|\W)\_\_([^\_]*)\_\_($|\W)}, '<b>\2</b>')
+    text = text.gsub(%r{(^|\W)\*([^\*]*)\*($|\W)}, '<i>\2</i>')
+    text = text.gsub(%r{(^|\W)\_([^\_]*)\_($|\W)}, '<i>\2</i>')
   end
 
   private
