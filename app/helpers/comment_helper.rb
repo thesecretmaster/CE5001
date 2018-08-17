@@ -32,17 +32,17 @@ module CommentHelper
         segment = segment.gsub(%r{(^|[^\"])(http[^\b\s]*{5,})}) do
           link = Regexp.last_match[2]
           link_short = link.gsub(%r{^https?\:\/\/}, '')[0..55]+'...'
-          " <a href=\"#{link}\">#{link_short}</a>"
+          " <a href=\"#{link}\">#{md_html_escape link_short}</a>"
         end
         segment = segment.gsub('[edit]', '<a href="#">edit</a>')
         segment = segment.gsub(%r{\[tag\:([a-zA-Z\-]{1,})\]}, '<a href="https://stackoverflow.com/questions/tagged/\1">\1</a>')
         segment = segment
       end
     end.join
-    text = text.gsub(%r{\*\*([^\*]*)\*\*}, '<b>\1</b>')
-    text = text.gsub(%r{\_\_([^\_]*)\_\_}, '<b>\1</b>')
-    text = text.gsub(%r{\*([^\*]*)\*}, '<i>\1</i>')
-    text = text.gsub(%r{\_([^\_]*)\_}, '<i>\1</i>')
+    text = text.gsub(%r{\b\*\*([^\*]*)\*\*\b}, '<b>\1</b>')
+    text = text.gsub(%r{\b\_\_([^\_]*)\_\_\b}, '<b>\1</b>')
+    text = text.gsub(%r{\b\*([^\*]*)\*\b}, '<i>\1</i>')
+    text = text.gsub(%r{\b\_([^\_]*)\_\b}, '<i>\1</i>')
   end
 
   private
