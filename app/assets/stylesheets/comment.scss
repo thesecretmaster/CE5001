@@ -11,6 +11,10 @@
   display: none;
 }
 
+.dropdown-noscript:hover .dropdown-menu {
+  display: block;
+}
+
 .comment-container form {
   input[type=radio] {
     position:fixed;opacity:0;

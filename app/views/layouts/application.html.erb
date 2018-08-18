@@ -31,7 +31,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto text-center">
             <% if current_user.present? %>
               <li class='nav-item'><%= link_to "Evaluate Comments", comment_path, class: 'nav-link' %></li>
               <li class='nav-item'><%= link_to "Instructions", login_path, class: 'nav-link' %></li>
@@ -47,7 +47,7 @@
                   <%= button_to "Start Database Dump", start_dump_path(format: :json), remote: true, class: 'btn-danger navbar-btn btn', method: :get, id: 'startDbTask' %>
                 </li>
               <% end %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown dropdown-noscript">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.username %>
               </a>
