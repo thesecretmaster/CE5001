@@ -27,6 +27,11 @@
                   <% end %>
                 </div>
               </div>
+              <div class="col-md-9">
+                <p>
+                  <%= comment.body %></span>
+                </p>
+              </div>
             </div>
             <hr>
         <% end %>
@@ -49,4 +54,10 @@
   <div class="alert alert-light col-md-8 offset-md-2">
     <%= render 'comment/data_usage', text_center: true %>
   </div>
+
+  <br/>
+  <div class="alert alert-light col-md-8 offset-md-2 text-center">
+    <small><i><%= link_to "click to see comments on stack overflow (this action is logged)", post_path(id: @post.id), class: 'text-muted' %></i></small>
+  </div>
+  <br>
 </div>
