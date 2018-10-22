@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CE5001</title>
+    <title>HNQE5001</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -25,7 +25,7 @@
           </button>
           <a class="navbar-brand text-danger font-weight-bold" href="/">
             <%= image_tag "https://i.stack.imgur.com/1YKEn.png", width: 30, style: 'margin-top:-3px' %>
-            Comment Evaluator 5001
+            HNQ Evaluator 5001
           </a>
         </div>
 
@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav mr-auto text-center">
             <% if current_user.present? %>
-              <li class='nav-item'><%= link_to "Evaluate Comments", comment_path, class: 'nav-link' %></li>
+              <li class='nav-item'><%= link_to "Evaluate HNQs", comment_path, class: 'nav-link' %></li>
               <li class='nav-item'><%= link_to "Instructions", login_path, class: 'nav-link' %></li>
             <% end %>
             <li class='nav-item'>
@@ -82,7 +82,7 @@
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Content and ideas stolen (in part) from <%= link_to "The Stack Overflow Blog", "https://stackoverflow.blog/2018/07/10/welcome-wagon-classifying-comments-on-stack-overflow/" %>.</p>
-        <p class="text-muted">Designed and created by <%= link_to "thesecretmaster", "https://cseducators.stackexchange.com/users/58" %> and <%= link_to "Undo", "https://stackoverflow.com/users/1849664" %>.<br><small>We are not Stack Overflow, nor are we affiliated with Stack Overflow.</small></p>
+        <p class="text-muted">Designed and created by <%= link_to "thesecretmaster", "https://cseducators.stackexchange.com/users/58" %> and <%= link_to "Undo", "https://stackoverflow.com/users/1849664" %>. Repurposed for HNQ by <%= link_to "ArtOfCode", "https://chat.stackexchange.com/users/121520/artofcode" %>.<br><small>We are not Stack Overflow, nor are we affiliated with Stack Overflow.</small></p>
       </div>
     </footer>
   </body>

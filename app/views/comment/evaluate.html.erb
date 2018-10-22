@@ -27,11 +27,6 @@
                   <% end %>
                 </div>
               </div>
-              <div class="col-md-9">
-                <p>
-                  <%= raw(render_md(obscure_usernames(comment.body, usermap: usermap, post: comment.post))) %> &mdash; <span class="text-primary">user<%= usermap[comment.commenter_id] || usermap[comment.commenter_id] = (('A'..'Z').to_a-usermap.values).shuffle[0.-1][0] %></span>
-                </p>
-              </div>
             </div>
             <hr>
         <% end %>
@@ -54,10 +49,4 @@
   <div class="alert alert-light col-md-8 offset-md-2">
     <%= render 'comment/data_usage', text_center: true %>
   </div>
-
-  <br/>
-  <div class="alert alert-light col-md-8 offset-md-2 text-center">
-    <small><i><%= link_to "click to see comments on stack overflow (this action is logged)", post_path(id: @post.id), class: 'text-muted' %></i></small>
-  </div>
-  <br>
 </div>
